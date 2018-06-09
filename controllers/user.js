@@ -143,7 +143,7 @@ function uploadImage( req, res ){
         if( file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' || file_ext == 'gif' ){
 
             if( userId != req.user.sub ){
-                re.status( 500 ).send({ message: 'No tienes permiso para actualizar imagen'});
+                res.status( 500 ).send({ message: 'No tienes permiso para actualizar imagen'});
             }
 
             User.findByIdAndUpdate( userId, { image: file_name }, { new: true }, ( err, userUpdated ) => {
